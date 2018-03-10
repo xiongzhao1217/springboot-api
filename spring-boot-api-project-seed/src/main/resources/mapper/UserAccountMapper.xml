@@ -5,8 +5,8 @@
     <!--
       WARNING - @mbg.generated
     -->
-    <id column="type" jdbcType="SMALLINT" property="type" />
-    <result column="id" jdbcType="INTEGER" property="id" />
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
     <result column="mem_id" jdbcType="INTEGER" property="memId" />
     <result column="amount" jdbcType="DECIMAL" property="amount" />
     <result column="fee" jdbcType="DOUBLE" property="fee" />
@@ -15,7 +15,7 @@
   
   <sql id="Base_Column_List">
     <!-- WARNING - @mbg.generated -->
-    user_account.type, user_account.id, user_account.mem_id, user_account.amount, user_account.fee, user_account.acc_desc
+    user_account.id, user_account.type, user_account.mem_id, user_account.amount, user_account.fee, user_account.acc_desc
   </sql>
 
 </mapper>

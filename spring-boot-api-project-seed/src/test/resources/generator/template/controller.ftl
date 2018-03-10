@@ -3,15 +3,14 @@ import ${basePackage}.core.api.Result;
 import ${basePackage}.core.api.ResultGenerator;
 import ${basePackage}.model.${modelNameUpperCamel};
 import ${basePackage}.service.${modelNameUpperCamel}Service;
+import ${basePackage}.core.PageBean;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by ${author} on ${date}.
@@ -47,10 +46,10 @@ public class ${modelNameUpperCamel}Controller {
     }
 
     @PostMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
-        PageHelper.startPage(page, size);
-        List<${modelNameUpperCamel}> list = ${modelNameLowerCamel}Service.findAll();
-        PageInfo pageInfo = new PageInfo(list);
+    public Result list(PageBean pageBean, UserAccount query) {
+        PageInfo<${modelNameUpperCamel}> pageInfo = PageHelper.startPage(pageBean)
+        .setOrderBy(pageBean.getOrderBy())
+        .doSelectPageInfo(()->${modelNameLowerCamel}Service.find(query));
         return ResultGenerator.genSuccessResult(pageInfo);
     }
 }

@@ -5,10 +5,10 @@ import javax.persistence.*;
 @Table(name = "user_account")
 public class UserAccount {
     @Id
-    private Integer type;
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    private Integer type;
 
     /**
      * 用户id
@@ -27,20 +27,6 @@ public class UserAccount {
     private String accDesc;
 
     /**
-     * @return type
-     */
-    public Integer getType() {
-        return type;
-    }
-
-    /**
-     * @param type
-     */
-    public void setType(Integer type) {
-        this.type = type;
-    }
-
-    /**
      * @return id
      */
     public Integer getId() {
@@ -52,6 +38,20 @@ public class UserAccount {
      */
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    /**
+     * @return type
+     */
+    public Integer getType() {
+        return type;
+    }
+
+    /**
+     * @param type
+     */
+    public void setType(Integer type) {
+        this.type = type;
     }
 
     /**

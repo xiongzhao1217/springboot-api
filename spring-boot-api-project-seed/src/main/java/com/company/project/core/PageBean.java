@@ -1,11 +1,20 @@
 package com.company.project.core;
 
 /**
- * 描述: 分页page
- * 作者:xiongzhao
- * 时间:18/3/4
+ * 分页bean
+ * @author xz
  */
 public class PageBean {
+
+    /**
+     * 默认页面
+     */
+    private static final Integer DEFAULT_PAGE_NUM = 1;
+
+    /**
+     * 默认页面大小
+     */
+    private static final Integer DEFAULT_PAGE_SIZE = 10;
 
     /**
      * 页码
@@ -21,6 +30,11 @@ public class PageBean {
      * 分页,如: create_time desc, 支持传null,支持多字段排序,支持[表别名.排序字段]排序
      */
     private String orderBy;
+
+    public PageBean() {
+        this.pageNum = DEFAULT_PAGE_NUM;
+        this.pageSize = DEFAULT_PAGE_SIZE;
+    }
 
     public Integer getPageNum() {
         return pageNum;

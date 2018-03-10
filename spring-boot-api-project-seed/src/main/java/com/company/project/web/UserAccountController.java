@@ -3,15 +3,14 @@ import com.company.project.core.api.Result;
 import com.company.project.core.api.ResultGenerator;
 import com.company.project.model.UserAccount;
 import com.company.project.service.UserAccountService;
+import com.company.project.core.PageBean;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * Created by CodeGenerator on 2018/03/10.
@@ -47,10 +46,10 @@ public class UserAccountController {
     }
 
     @PostMapping("/list")
-    public Result list(@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "0") Integer size) {
-        PageHelper.startPage(page, size);
-        List<UserAccount> list = userAccountService.findAll();
-        PageInfo pageInfo = new PageInfo(list);
+    public Result list(PageBean pageBean, UserAccount query) {
+        PageInfo<UserAccount> pageInfo = PageHelper.startPage(pageBean)
+        .setOrderBy(pageBean.getOrderBy())
+        .doSelectPageInfo(()->userAccountService.find(query));
         return ResultGenerator.genSuccessResult(pageInfo);
     }
 }

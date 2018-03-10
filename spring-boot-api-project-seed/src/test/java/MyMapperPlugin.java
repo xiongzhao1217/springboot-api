@@ -22,6 +22,11 @@ public class MyMapperPlugin extends MapperPlugin {
         return true;
     }
 
+    /**
+     * mapper.xml生成Base_Column_List
+     * @param document
+     * @param introspectedTable
+     */
     private void generateSqlBaseColumns(Document document, IntrospectedTable introspectedTable) {
         XmlElement rootElement = document.getRootElement();
         XmlElement sqlElement = new XmlElement("sql");
