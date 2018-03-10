@@ -22,22 +22,28 @@ public class CodeGenerator {
     private static final String JDBC_USERNAME = "ivydad_test";
     private static final String JDBC_PASSWORD = "IVYDAd2015";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
+    // 项目在硬盘上的基础路径
+    private static final String PROJECT_PATH = System.getProperty("user.dir");
+    // 模板位置
+    private static final String TEMPLATE_FILE_PATH = PROJECT_PATH + "/src/test/resources/generator/template";
+    // java文件路径
+    private static final String JAVA_PATH = "/src/main/java";
+    // 资源文件路径
+    private static final String RESOURCES_PATH = "/src/main/resources";
 
-    private static final String PROJECT_PATH = System.getProperty("user.dir");//项目在硬盘上的基础路径
-    private static final String TEMPLATE_FILE_PATH = PROJECT_PATH + "/src/test/resources/generator/template";//模板位置
-
-    private static final String JAVA_PATH = "/src/main/java"; //java文件路径
-    private static final String RESOURCES_PATH = "/src/main/resources";//资源文件路径
-
-    private static final String PACKAGE_PATH_SERVICE = packageConvertPath(SERVICE_PACKAGE);//生成的Service存放路径
-    private static final String PACKAGE_PATH_SERVICE_IMPL = packageConvertPath(SERVICE_IMPL_PACKAGE);//生成的Service实现存放路径
-    private static final String PACKAGE_PATH_CONTROLLER = packageConvertPath(CONTROLLER_PACKAGE);//生成的Controller存放路径
-
-    private static final String AUTHOR = "CodeGenerator";//@author
-    private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());//@date
+    //生成的Service存放路径
+    private static final String PACKAGE_PATH_SERVICE = packageConvertPath(SERVICE_PACKAGE);
+    //生成的Service实现存放路径
+    private static final String PACKAGE_PATH_SERVICE_IMPL = packageConvertPath(SERVICE_IMPL_PACKAGE);
+    //生成的Controller存放路径
+    private static final String PACKAGE_PATH_CONTROLLER = packageConvertPath(CONTROLLER_PACKAGE);
+    //@author
+    private static final String AUTHOR = "CodeGenerator";
+    //@date
+    private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
 
     public static void main(String[] args) {
-        genCode("user");
+        genCode("user_account");
         //genCodeByCustomModelName("输入表名","输入自定义Model名称");
     }
 
@@ -78,30 +84,40 @@ public class CodeGenerator {
         jdbcConnectionConfiguration.setPassword(JDBC_PASSWORD);
         jdbcConnectionConfiguration.setDriverClass(JDBC_DIVER_CLASS_NAME);
         context.setJdbcConnectionConfiguration(jdbcConnectionConfiguration);
-
+        // 插件配置
         PluginConfiguration pluginConfiguration = new PluginConfiguration();
-        pluginConfiguration.setConfigurationType("tk.mybatis.mapper.generator.MapperPlugin");
+//        pluginConfiguration.setConfigurationType("tk.mybatis.mapper.generator.MapperPlugin");
+        pluginConfiguration.setConfigurationType("MyMapperPlugin");
         pluginConfiguration.addProperty("mappers", MAPPER_INTERFACE_REFERENCE);
         context.addPluginConfiguration(pluginConfiguration);
 
+        // model配置
         JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();
         javaModelGeneratorConfiguration.setTargetProject(PROJECT_PATH + JAVA_PATH);
         javaModelGeneratorConfiguration.setTargetPackage(MODEL_PACKAGE);
         context.setJavaModelGeneratorConfiguration(javaModelGeneratorConfiguration);
 
+        // mapper xml配置
         SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
         sqlMapGeneratorConfiguration.setTargetProject(PROJECT_PATH + RESOURCES_PATH);
         sqlMapGeneratorConfiguration.setTargetPackage("mapper");
         context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);
 
+        // mapper接口配置
         JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
         javaClientGeneratorConfiguration.setTargetProject(PROJECT_PATH + JAVA_PATH);
         javaClientGeneratorConfiguration.setTargetPackage(MAPPER_PACKAGE);
         javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
         context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
 
+        // 数据库字段与java字段类型映射
+        JavaTypeResolverConfiguration javaTypeResolverConfiguration = new JavaTypeResolverConfiguration();
+        javaTypeResolverConfiguration.setConfigurationType("MyJavaTypeResolverImpl");
+        context.setJavaTypeResolverConfiguration(javaTypeResolverConfiguration);
+
         TableConfiguration tableConfiguration = new TableConfiguration(context);
         tableConfiguration.setTableName(tableName);
+
         if (StringUtils.isNotEmpty(modelName))tableConfiguration.setDomainObjectName(modelName);
         tableConfiguration.setGeneratedKey(new GeneratedKey("id", "Mysql", true, null));
         context.addTableConfiguration(tableConfiguration);

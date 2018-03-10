@@ -1,6 +1,6 @@
 package com.company.project.service;
 import com.company.project.model.User;
-import com.company.project.core.BaseService;
+import com.company.project.core.base.BaseService;
 
 
 /**

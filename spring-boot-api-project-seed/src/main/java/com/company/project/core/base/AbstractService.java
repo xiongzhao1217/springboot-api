@@ -1,14 +1,12 @@
-package com.company.project.core;
+package com.company.project.core.base;
 
-
+import com.company.project.core.exception.ServiceException;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Condition;
-
 import java.lang.reflect.Field;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
 /**
  * 基于通用MyBatis Mapper插件的Service接口的实现
  * @author xz
@@ -29,6 +27,11 @@ public abstract class AbstractService<T> implements BaseService<T> {
     }
 
     @Override
+    public int insert(T model) {
+        return mapper.insert(model);
+    }
+
+    @Override
     public int insertSelective(T model) {
         return mapper.insertSelective(model);
     }
@@ -46,6 +49,11 @@ public abstract class AbstractService<T> implements BaseService<T> {
     @Override
     public int deleteByIds(String ids) {
         return mapper.deleteByIds(ids);
+    }
+
+    @Override
+    public int delete(T model) {
+        return mapper.delete(model);
     }
 
     @Override
@@ -77,8 +85,18 @@ public abstract class AbstractService<T> implements BaseService<T> {
     }
 
     @Override
+    public T selectOne(T model) {
+        return mapper.selectOne(model);
+    }
+
+    @Override
     public List<T> findByIds(String ids) {
         return mapper.selectByIds(ids);
+    }
+
+    @Override
+    public List<T> find(T model) {
+        return mapper.select(model);
     }
 
     @Override
@@ -89,5 +107,15 @@ public abstract class AbstractService<T> implements BaseService<T> {
     @Override
     public List<T> findAll() {
         return mapper.selectAll();
+    }
+
+    @Override
+    public int selectCount(T model) {
+        return mapper.selectCount(model);
+    }
+
+    @Override
+    public int selectCountByCondition(Condition condition) {
+        return mapper.selectCountByCondition(condition);
     }
 }

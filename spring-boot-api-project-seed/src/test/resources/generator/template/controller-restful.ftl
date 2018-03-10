@@ -1,19 +1,17 @@
 package ${basePackage}.web;
 
-import ${basePackage}.core.Result;
-import ${basePackage}.core.ResultGenerator;
+import ${basePackage}.core.api.Result;
+import ${basePackage}.core.api.ResultGenerator;
 import ${basePackage}.model.${modelNameUpperCamel};
 import ${basePackage}.service.${modelNameUpperCamel}Service;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 import java.util.List;
-
 /**
-* Created by ${author} on ${date}.
-*/
+ * Created by ${author} on ${date}.
+ */
 @RestController
 @RequestMapping("${baseRequestMapping}")
 public class ${modelNameUpperCamel}Controller {
@@ -22,7 +20,7 @@ public class ${modelNameUpperCamel}Controller {
 
     @PostMapping
     public Result add(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
-        ${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
+        ${modelNameLowerCamel}Service.insertSelective(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
     }
 
@@ -34,13 +32,13 @@ public class ${modelNameUpperCamel}Controller {
 
     @PutMapping
     public Result update(@RequestBody ${modelNameUpperCamel} ${modelNameLowerCamel}) {
-        ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
+        ${modelNameLowerCamel}Service.updateSelective(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
     }
 
     @GetMapping("/{id}")
     public Result detail(@PathVariable Integer id) {
-        ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
+        ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.selectById(id);
         return ResultGenerator.genSuccessResult(${modelNameLowerCamel});
     }
 

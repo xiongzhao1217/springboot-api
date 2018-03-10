@@ -1,6 +1,6 @@
 package ${basePackage}.web;
-import ${basePackage}.core.Result;
-import ${basePackage}.core.ResultGenerator;
+import ${basePackage}.core.api.Result;
+import ${basePackage}.core.api.ResultGenerator;
 import ${basePackage}.model.${modelNameUpperCamel};
 import ${basePackage}.service.${modelNameUpperCamel}Service;
 import com.github.pagehelper.PageHelper;
@@ -14,8 +14,8 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
-* Created by ${author} on ${date}.
-*/
+ * Created by ${author} on ${date}.
+ */
 @RestController
 @RequestMapping("${baseRequestMapping}")
 public class ${modelNameUpperCamel}Controller {
@@ -24,7 +24,7 @@ public class ${modelNameUpperCamel}Controller {
 
     @PostMapping("/add")
     public Result add(${modelNameUpperCamel} ${modelNameLowerCamel}) {
-        ${modelNameLowerCamel}Service.save(${modelNameLowerCamel});
+        ${modelNameLowerCamel}Service.insertSelective(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
     }
 
@@ -36,13 +36,13 @@ public class ${modelNameUpperCamel}Controller {
 
     @PostMapping("/update")
     public Result update(${modelNameUpperCamel} ${modelNameLowerCamel}) {
-        ${modelNameLowerCamel}Service.update(${modelNameLowerCamel});
+        ${modelNameLowerCamel}Service.updateSelective(${modelNameLowerCamel});
         return ResultGenerator.genSuccessResult();
     }
 
     @PostMapping("/detail")
     public Result detail(@RequestParam Integer id) {
-        ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.findById(id);
+        ${modelNameUpperCamel} ${modelNameLowerCamel} = ${modelNameLowerCamel}Service.selectById(id);
         return ResultGenerator.genSuccessResult(${modelNameLowerCamel});
     }
 

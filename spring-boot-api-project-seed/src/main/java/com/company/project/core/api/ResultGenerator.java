@@ -1,4 +1,7 @@
-package com.company.project.core;
+package com.company.project.core.api;
+
+import com.company.project.core.api.Result;
+import com.company.project.core.api.ResultCode;
 
 /**
  * 响应结果生成工具
