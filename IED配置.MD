@@ -12,7 +12,7 @@
 
 3. springboot项目热部署
 * Preferences(windows为Setting)->Build, Execution, Deployment->Compiler->勾选Build project automatically
-
+![自动生成序列号](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-autobuild.jpg?raw=true)
 
 4. 添加jdk
 * 点击file->Project Structure->SDKs->点击加号选择本地jdk的HOME路径<br>
