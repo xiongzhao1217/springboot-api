@@ -10,24 +10,25 @@
 选上以后，在你的class中：Option+Enter(Windows为Alt+Enter)就会提示自动创建serialVersionUID了。<br>
 ![自动生成序列号](https://github.com/xiongzhao1217/markdown-photos/blob/master/serializableID.jpg?raw=true)
 
-3. 添加jdk
+3. springboot项目热部署
+* Preferences(windows为Setting)->Build, Execution, Deployment->Compiler->勾选Build project automatically
+
+
+4. 添加jdk
 * 点击file->Project Structure->SDKs->点击加号选择本地jdk的HOME路径<br>
 ![配置git](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-jdk.jpg?raw=true)
 
-4. 配置git
+5. 配置git
 * mac系统自带git命令，执行文件路径为/usr/bin/git，windows系统请[下载gitbash](http://gitforwindows.org/)并安装
 * Preferences(windows为Setting)->搜索git->选择本地git执行文件<br>
 ![配置git](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-git.jpg?raw=true)
 
-5. 配置maven
+6. 配置maven
 * Preferences(windows为Setting)->搜索maven->选择本地maven根目录、maven setting文件->保存即可<br>
 ![配置maven](https://github.com/xiongzhao1217/markdown-photos/blob/master/mvn.jpg?raw=true)
 
-6. 配置tomcat(spring boot项目使用嵌入式web容器，请忽略该配置)
+7. 配置tomcat(spring boot项目使用嵌入式web容器，请忽略该配置)
 * Preferences(windows为Setting)->搜索server->点击Application Servers->点击右侧左上角加号->弹出对话框中选择本地tomcat根目录->保存即可<br>
 ![配置tomcat01](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-tomcat01.jpg?raw=true)<br>
 ![配置tomcat02](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-tomcat02.jpg?raw=true)
 <br>到此，intellij配置完成。
-
-
-
