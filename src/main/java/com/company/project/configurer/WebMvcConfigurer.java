@@ -49,6 +49,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
     public void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
         FastJsonHttpMessageConverter converter = new FastJsonHttpMessageConverter();
         FastJsonConfig config = new FastJsonConfig();
+        config.setDateFormat("yyyy-MM-dd HH:mm:ss");
         config.setSerializerFeatures(SerializerFeature.WriteMapNullValue,//保留空的字段
                 SerializerFeature.WriteNullStringAsEmpty,//String null -> ""
                 SerializerFeature.WriteNullNumberAsZero);//Number null -> 0
