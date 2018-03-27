@@ -4,22 +4,19 @@ import org.apache.commons.lang3.StringUtils;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.DefaultShellCallback;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-
-import static com.company.project.core.ProjectConstant.*;
-
 /**
  * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。
+ * @author xz
  */
 public class CodeGenerator {
     // 业务模块路径
     public static final String BASE_PACKAGE = "com.company.project";
-    private static final String MODULE_PATH = ".system";
+    private static final String MODULE_PATH = ".user";
     //JDBC配置，请修改为你项目的实际配置
     private static final String JDBC_URL = "jdbc:mysql://47.104.157.189:3306/demo";
     private static final String JDBC_USERNAME = "root";
@@ -33,7 +30,16 @@ public class CodeGenerator {
     private static final String JAVA_PATH = "/src/main/java";
     // 资源文件路径
     private static final String RESOURCES_PATH = "/src/main/resources";
-
+    //Model所在包
+    public static final String MODEL_PACKAGE = BASE_PACKAGE + ".model";
+    //Mapper所在包
+    public static final String MAPPER_PACKAGE = BASE_PACKAGE + ".dao";
+    //Service所在包
+    public static final String SERVICE_PACKAGE = BASE_PACKAGE + ".service";
+    //Controller所在包
+    public static final String CONTROLLER_PACKAGE = BASE_PACKAGE + ".web";
+    //Mapper插件基础接口的完全限定名
+    public static final String MAPPER_INTERFACE_REFERENCE = BASE_PACKAGE + ".core.base.Mapper";
     //生成的Service存放路径
     private static final String PACKAGE_PATH_SERVICE = packageConvertPath(SERVICE_PACKAGE + MODULE_PATH);
     //生成的Service实现存放路径
@@ -47,6 +53,7 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
 //        genCode("user_account");
+//        genCodeByCustomModelName("sys_config","SystemConfig");
         genCodeByCustomModelName("u_member","Member");
     }
 

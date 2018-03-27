@@ -1,8 +1,8 @@
-package ${basePackage}.web;
+package ${basePackage}.web${modulePath};
 import ${basePackage}.core.api.Result;
 import ${basePackage}.core.api.ResultGenerator;
 import ${basePackage}.model${modulePath}.${modelNameUpperCamel};
-import ${basePackage}.service.${modulePath}.${modelNameUpperCamel}Service;
+import ${basePackage}.service${modulePath}.${modelNameUpperCamel}Service;
 import ${basePackage}.core.PageBean;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * Created on ${date}.
- * @author ${author}
+ * ${modelNameUpperCamel}Controller created on ${date}.
+ * @author ${author}.
  */
 @RestController
-@RequestMapping("${baseRequestMapping}")
+@RequestMapping("/${modulePath ? substring(1)}/${modelNameLowerCamel}")
 public class ${modelNameUpperCamel}Controller {
     @Resource
     private ${modelNameUpperCamel}Service ${modelNameLowerCamel}Service;

@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 /**
  * Created on ${date}.
- * @author ${author}
+ * @author ${author}.
  */
 @Service
 @Transactional

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.project.dao.user.MemberMapper">
+  <resultMap id="BaseResultMap" type="com.company.project.model.user.Member">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+    <result column="passwd_salt" jdbcType="VARCHAR" property="passwdSalt" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="sex" jdbcType="SMALLINT" property="sex" />
+    <result column="mem_status" jdbcType="SMALLINT" property="memStatus" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  
+  <sql id="Base_Column_List">
+    <!-- WARNING - @mbg.generated -->
+    u_member.id, u_member.username, u_member.passwd, u_member.passwd_salt, u_member.nick_name, u_member.sex, u_member.mem_status, u_member.create_time, u_member.update_time
+  </sql>
+  
+</mapper>
