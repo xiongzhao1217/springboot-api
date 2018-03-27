@@ -15,6 +15,6 @@ import javax.annotation.Resource;
 @Transactional
 public class MemberServiceImpl extends AbstractService<Member> implements MemberService {
     @Resource
-    private MemberMapper uMemberMapper;
+    private MemberMapper memberMapper;
 
 }

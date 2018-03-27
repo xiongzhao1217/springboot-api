@@ -9,12 +9,12 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 /**
  * Created on 2018/03/27.
- * @author CodeGenerator
+ * @author CodeGenerator.
  */
 @Service
 @Transactional
 public class SystemConfigServiceImpl extends AbstractService<SystemConfig> implements SystemConfigService {
     @Resource
-    private SystemConfigMapper sysConfigMapper;
+    private SystemConfigMapper systemConfigMapper;
 
 }

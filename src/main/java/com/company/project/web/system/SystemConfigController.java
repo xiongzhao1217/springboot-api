@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * Created on 2018/03/27.
- * @author CodeGenerator
+ * SystemConfigController created on 2018/03/27.
+ * @author CodeGenerator.
  */
 @RestController
 @RequestMapping("/system/systemConfig")

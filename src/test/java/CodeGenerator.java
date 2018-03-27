@@ -16,7 +16,7 @@ import java.util.*;
 public class CodeGenerator {
     // 业务模块路径
     public static final String BASE_PACKAGE = "com.company.project";
-    private static final String MODULE_PATH = ".user";
+    private static final String MODULE_PATH = ".system";
     //JDBC配置，请修改为你项目的实际配置
     private static final String JDBC_URL = "jdbc:mysql://47.104.157.189:3306/demo";
     private static final String JDBC_USERNAME = "root";
@@ -53,8 +53,8 @@ public class CodeGenerator {
 
     public static void main(String[] args) {
 //        genCode("user_account");
-//        genCodeByCustomModelName("sys_config","SystemConfig");
-        genCodeByCustomModelName("u_member","Member");
+        genCodeByCustomModelName("sys_config","SystemConfig");
+//        genCodeByCustomModelName("u_member","Member");
     }
 
     /**
@@ -166,7 +166,7 @@ public class CodeGenerator {
             data.put("author", AUTHOR);
             String modelNameUpperCamel = StringUtils.isEmpty(modelName) ? tableNameConvertUpperCamel(tableName) : modelName;
             data.put("modelNameUpperCamel", modelNameUpperCamel);
-            data.put("modelNameLowerCamel", tableNameConvertLowerCamel(tableName));
+            data.put("modelNameLowerCamel", CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, modelNameUpperCamel));
             data.put("basePackage", BASE_PACKAGE);
             data.put("modulePath", MODULE_PATH);
 
