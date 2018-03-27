@@ -10,7 +10,8 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.web.bind.annotation.*;
 import javax.annotation.Resource;
 /**
- * Created by ${author} on ${date}.
+ * Created on ${date}.
+ * @author ${author}
  */
 @RestController
 @RequestMapping("${baseRequestMapping}")

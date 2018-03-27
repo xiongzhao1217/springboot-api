@@ -1,14 +1,15 @@
-package ${basePackage}.service.impl;
+package ${basePackage}.service${modulePath}.impl;
 
-import ${basePackage}.dao.${modelNameUpperCamel}Mapper;
-import ${basePackage}.model.${modelNameUpperCamel};
-import ${basePackage}.service.${modelNameUpperCamel}Service;
+import ${basePackage}.dao${modulePath}.${modelNameUpperCamel}Mapper;
+import ${basePackage}.model${modulePath}.${modelNameUpperCamel};
+import ${basePackage}.service${modulePath}.${modelNameUpperCamel}Service;
 import ${basePackage}.core.base.AbstractService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 /**
- * Created by ${author} on ${date}.
+ * Created on ${date}.
+ * @author ${author}
  */
 @Service
 @Transactional

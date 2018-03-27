@@ -1,8 +1,8 @@
 package ${basePackage}.web;
 import ${basePackage}.core.api.Result;
 import ${basePackage}.core.api.ResultGenerator;
-import ${basePackage}.model.${modelNameUpperCamel};
-import ${basePackage}.service.${modelNameUpperCamel}Service;
+import ${basePackage}.model${modulePath}.${modelNameUpperCamel};
+import ${basePackage}.service.${modulePath}.${modelNameUpperCamel}Service;
 import ${basePackage}.core.PageBean;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * Created by ${author} on ${date}.
+ * Created on ${date}.
+ * @author ${author}
  */
 @RestController
 @RequestMapping("${baseRequestMapping}")
@@ -46,7 +47,7 @@ public class ${modelNameUpperCamel}Controller {
     }
 
     @PostMapping("/list")
-    public Result list(PageBean pageBean, UserAccount query) {
+    public Result list(PageBean pageBean, ${modelNameUpperCamel} query) {
         PageInfo<${modelNameUpperCamel}> pageInfo = PageHelper.startPage(pageBean)
         .setOrderBy(pageBean.getOrderBy())
         .doSelectPageInfo(()->${modelNameLowerCamel}Service.find(query));

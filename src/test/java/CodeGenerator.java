@@ -17,10 +17,13 @@ import static com.company.project.core.ProjectConstant.*;
  * 代码生成器，根据数据表名称生成对应的Model、Mapper、Service、Controller简化开发。
  */
 public class CodeGenerator {
+    // 业务模块路径
+    public static final String BASE_PACKAGE = "com.company.project";
+    private static final String MODULE_PATH = ".system";
     //JDBC配置，请修改为你项目的实际配置
-    private static final String JDBC_URL = "jdbc:mysql://mysql.ivydad.com.cn:3306/ivydad_history";
-    private static final String JDBC_USERNAME = "ivydad_test";
-    private static final String JDBC_PASSWORD = "IVYDAd2015";
+    private static final String JDBC_URL = "jdbc:mysql://47.104.157.189:3306/demo";
+    private static final String JDBC_USERNAME = "root";
+    private static final String JDBC_PASSWORD = "B112358";
     private static final String JDBC_DIVER_CLASS_NAME = "com.mysql.jdbc.Driver";
     // 项目在硬盘上的基础路径
     private static final String PROJECT_PATH = System.getProperty("user.dir");
@@ -32,19 +35,19 @@ public class CodeGenerator {
     private static final String RESOURCES_PATH = "/src/main/resources";
 
     //生成的Service存放路径
-    private static final String PACKAGE_PATH_SERVICE = packageConvertPath(SERVICE_PACKAGE);
+    private static final String PACKAGE_PATH_SERVICE = packageConvertPath(SERVICE_PACKAGE + MODULE_PATH);
     //生成的Service实现存放路径
-    private static final String PACKAGE_PATH_SERVICE_IMPL = packageConvertPath(SERVICE_IMPL_PACKAGE);
+    private static final String PACKAGE_PATH_SERVICE_IMPL = packageConvertPath(SERVICE_PACKAGE + MODULE_PATH + ".impl");
     //生成的Controller存放路径
-    private static final String PACKAGE_PATH_CONTROLLER = packageConvertPath(CONTROLLER_PACKAGE);
+    private static final String PACKAGE_PATH_CONTROLLER = packageConvertPath(CONTROLLER_PACKAGE + MODULE_PATH);
     //@author
     private static final String AUTHOR = "CodeGenerator";
     //@date
     private static final String DATE = new SimpleDateFormat("yyyy/MM/dd").format(new Date());
 
     public static void main(String[] args) {
-        genCode("user_account");
-        //genCodeByCustomModelName("输入表名","输入自定义Model名称");
+//        genCode("user_account");
+        genCodeByCustomModelName("u_member","Member");
     }
 
     /**
@@ -94,19 +97,19 @@ public class CodeGenerator {
         // model配置
         JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();
         javaModelGeneratorConfiguration.setTargetProject(PROJECT_PATH + JAVA_PATH);
-        javaModelGeneratorConfiguration.setTargetPackage(MODEL_PACKAGE);
+        javaModelGeneratorConfiguration.setTargetPackage(MODEL_PACKAGE + MODULE_PATH);
         context.setJavaModelGeneratorConfiguration(javaModelGeneratorConfiguration);
 
         // mapper xml配置
         SqlMapGeneratorConfiguration sqlMapGeneratorConfiguration = new SqlMapGeneratorConfiguration();
         sqlMapGeneratorConfiguration.setTargetProject(PROJECT_PATH + RESOURCES_PATH);
-        sqlMapGeneratorConfiguration.setTargetPackage("mapper");
+        sqlMapGeneratorConfiguration.setTargetPackage("mapper" + MODULE_PATH);
         context.setSqlMapGeneratorConfiguration(sqlMapGeneratorConfiguration);
 
         // mapper接口配置
         JavaClientGeneratorConfiguration javaClientGeneratorConfiguration = new JavaClientGeneratorConfiguration();
         javaClientGeneratorConfiguration.setTargetProject(PROJECT_PATH + JAVA_PATH);
-        javaClientGeneratorConfiguration.setTargetPackage(MAPPER_PACKAGE);
+        javaClientGeneratorConfiguration.setTargetPackage(MAPPER_PACKAGE + MODULE_PATH);
         javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
         context.setJavaClientGeneratorConfiguration(javaClientGeneratorConfiguration);
 
@@ -158,6 +161,7 @@ public class CodeGenerator {
             data.put("modelNameUpperCamel", modelNameUpperCamel);
             data.put("modelNameLowerCamel", tableNameConvertLowerCamel(tableName));
             data.put("basePackage", BASE_PACKAGE);
+            data.put("modulePath", MODULE_PATH);
 
             File file = new File(PROJECT_PATH + JAVA_PATH + PACKAGE_PATH_SERVICE + modelNameUpperCamel + "Service.java");
             if (!file.getParentFile().exists()) {
@@ -191,6 +195,7 @@ public class CodeGenerator {
             data.put("modelNameUpperCamel", modelNameUpperCamel);
             data.put("modelNameLowerCamel", CaseFormat.UPPER_CAMEL.to(CaseFormat.LOWER_CAMEL, modelNameUpperCamel));
             data.put("basePackage", BASE_PACKAGE);
+            data.put("modulePath", MODULE_PATH);
 
             File file = new File(PROJECT_PATH + JAVA_PATH + PACKAGE_PATH_CONTROLLER + modelNameUpperCamel + "Controller.java");
             if (!file.getParentFile().exists()) {
