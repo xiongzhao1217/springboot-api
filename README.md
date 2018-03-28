@@ -22,5 +22,5 @@ springboot2基于[作者：lihengming]的[spring-boot-api-project-seed](https://
 - 接口参数自动校验（如非空，长度等）
 
 ## 快速开发
-- [开发工具配置](https://github.com/xiongzhao1217/springboot2/blob/master/IED%E9%85%8D%E7%BD%AE.MD)
+- [开发工具配置](https://github.com/xiongzhao1217/springboot2/blob/master/ide-config.md)
 - [启动项目](https://github.com/lihengming/spring-boot-api-project-seed)
