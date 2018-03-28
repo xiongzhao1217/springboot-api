@@ -10,9 +10,13 @@
 选上以后，在你的class中：Option+Enter(Windows为Alt+Enter)就会提示自动创建serialVersionUID了。<br>
 ![自动生成序列号](https://github.com/xiongzhao1217/markdown-photos/blob/master/serializableID.jpg?raw=true)
 
-3. springboot项目热部署
+3. springboot项目热部署(非springboot项目略过)
 * Preferences(windows为Setting)->Build, Execution, Deployment->Compiler->勾选Build project automatically
 ![自动生成序列号](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-autobuild.jpg?raw=true)
+
+4. 阿里Java开发规范插件
+* Preferences(windows为Setting)->Plugins->Browse repositories->搜索Alibaba->安装Alibaba Java coding...并重启ide
+![阿里Java开发规范](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-alibaba.jpg?raw=true)
 
 4. 添加jdk
 * 点击file->Project Structure->SDKs->点击加号选择本地jdk的HOME路径<br>
