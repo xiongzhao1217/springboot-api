@@ -27,11 +27,20 @@
 * Preferences(windows为Setting)->搜索git->选择本地git执行文件<br>
 ![配置git](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-git.jpg?raw=true)
 
-7. 配置maven
+7. windows配置终端
+* 需要先[下载gitbash](http://gitforwindows.org/)并安装
+* Setting->搜索Terminal->修改Shell pash为gitbash安装目录\bin\bash.exe
+* 解决git commit注释乱码的问题，在gitnash安装目录\Git\etc\bash.bashrc末尾行追加如下内容
+```
+export LANG="zh_CN.UTF-8"
+export LC_ALL="zh_CN.UTF-8"
+```
+
+8. 配置maven
 * Preferences(windows为Setting)->搜索maven->选择本地maven根目录、maven setting文件->保存即可<br>
 ![配置maven](https://github.com/xiongzhao1217/markdown-photos/blob/master/mvn.jpg?raw=true)
 
-8. 配置tomcat(spring boot项目使用嵌入式web容器，请忽略该配置)
+9. 配置tomcat(spring boot项目使用嵌入式web容器，请忽略该配置)
 * Preferences(windows为Setting)->搜索server->点击Application Servers->点击右侧左上角加号->弹出对话框中选择本地tomcat根目录->保存即可<br>
 ![配置tomcat01](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-tomcat01.jpg?raw=true)<br>
 ![配置tomcat02](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-tomcat02.jpg?raw=true)
