@@ -35,6 +35,8 @@
 export LANG="zh_CN.UTF-8"
 export LC_ALL="zh_CN.UTF-8"
 ```
+* 现在可以愉快的敲命令了
+![配置Terminal](https://github.com/xiongzhao1217/markdown-photos/blob/master/ide-terminal.jpg?raw=true)
 
 8. 配置maven
 * Preferences(windows为Setting)->搜索maven->选择本地maven根目录、maven setting文件->保存即可<br>
