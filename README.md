@@ -21,6 +21,7 @@ springboot2基于[作者：lihengming]的[spring-boot-api-project-seed](https://
 - 事物支持声明式与注解式
 - 基于hibernate-validator的参数自动校验，统一异常处理参数校验错误
 - 前台传参智能映射java.util.Date类型，[自动映射四种日期格式：yyyy-MM;yyyy-MM-dd;yyyy-MM-dd HH:mm;yyyy-MM-dd HH:mm:ss]
+- 统一日期格式返回，Date类型字段自动转换String格式日期 -> yyyy-MM-dd HH:mm:ss
 
 ## 快速开发
 - [开发工具配置](https://github.com/xiongzhao1217/springboot2/blob/master/ide-config.md)
