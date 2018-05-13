@@ -25,6 +25,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.validation.BindException;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
@@ -81,8 +82,12 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
             @Override
             public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) {
                 Result result = new Result();
+                if (e instanceof BindException) {
+                    result.setCode(ResultCode.FAIL).setMessage(((BindException) e).getBindingResult().getFieldError().getDefaultMessage());
+                    logger.info(e.getMessage());
+                }
                 //业务失败的异常，如“账号或密码错误”
-                if (e instanceof ServiceException) {
+                else if (e instanceof ServiceException) {
                     result.setCode(ResultCode.FAIL).setMessage(e.getMessage());
                     logger.info(e.getMessage());
                 } else if (e instanceof NoHandlerFoundException) {
