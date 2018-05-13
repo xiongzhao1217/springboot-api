@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 public class Member {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull(message = "id不能为空")
+    @NotNull(message = "不能为空")
     private Integer id;
 
     /**
@@ -34,14 +34,14 @@ public class Member {
      * 昵称
      */
     @Column(name = "nick_name")
-    @NotBlank(message = "昵称不能为空")
+    @NotBlank(message = "不能为空")
     private String nickName;
 
     /**
      * 性别,1:男,2:女
      */
-    @NotNull(message = "性别不能为空")
-    @Min(value = 1, message = "性别必须是大于0的整数")
+    @NotNull(message = "不能为空")
+    @Min(value = 1, message = "必须是大于0的整数")
     private Integer sex;
 
     /**

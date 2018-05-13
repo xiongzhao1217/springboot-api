@@ -48,7 +48,7 @@ public class DateConverterConfigurer implements Converter<String, Date> {
         }else if(dateStr.matches("^\\d{4}-\\d{1,2}-\\d{1,2} {1}\\d{1,2}:\\d{1,2}:\\d{1,2}$")){
             return parseDate(dateStr, DATE_FORMATS.get(3));
         }else {
-            throw new BizException("日期"+dateStr+"无法转换为Date类型");
+            throw new BizException(dateStr+"无法转换为Date类型");
         }
     }
 

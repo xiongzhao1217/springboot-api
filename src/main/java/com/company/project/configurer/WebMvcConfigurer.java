@@ -26,6 +26,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.validation.BindException;
+import org.springframework.validation.FieldError;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
@@ -83,7 +84,18 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
             public ModelAndView resolveException(HttpServletRequest request, HttpServletResponse response, Object handler, Exception e) {
                 Result result = new Result();
                 if (e instanceof BindException) {
-                    result.setCode(ResultCode.FAIL).setMessage(((BindException) e).getBindingResult().getFieldError().getDefaultMessage());
+                    FieldError error = ((BindException) e).getBindingResult().getFieldError();
+                    String message = error.getDefaultMessage();
+                    int index = message.indexOf("BizException: ");
+                    if(index > -1){
+                        message = message.substring(index + 14);
+                    }
+                    StringBuffer messageBuffer = new StringBuffer();
+                    messageBuffer.append("字段[");
+                    messageBuffer.append(error.getField());
+                    messageBuffer.append("]: ");
+                    messageBuffer.append(message);
+                    result.setCode(ResultCode.FAIL).setMessage(messageBuffer.toString());
                     logger.info(e.getMessage());
                 }
                 //业务失败的异常，如“账号或密码错误”

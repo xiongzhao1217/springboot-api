@@ -38,8 +38,6 @@ public class MemberController {
 
     @PostMapping("/update")
     public Result update(@Valid Member member) {
-        if(true)
-            throw new BizException("你好");
         memberService.updateSelective(member);
         return ResultGenerator.genSuccessResult();
     }
