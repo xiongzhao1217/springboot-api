@@ -1,6 +1,6 @@
 package com.company.project.core.base;
 
-import com.company.project.core.exception.ServiceException;
+import com.company.project.core.exception.BizException;
 import org.apache.ibatis.exceptions.TooManyResultsException;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.entity.Condition;
@@ -80,7 +80,7 @@ public abstract class AbstractService<T> implements BaseService<T> {
             field.set(model, value);
             return mapper.selectOne(model);
         } catch (ReflectiveOperationException e) {
-            throw new ServiceException(e.getMessage(), e);
+            throw new BizException(e.getMessage(), e);
         }
     }
 

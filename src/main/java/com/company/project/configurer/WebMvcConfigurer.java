@@ -17,7 +17,7 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
 
 import com.company.project.core.api.Result;
 import com.company.project.core.api.ResultCode;
-import com.company.project.core.exception.ServiceException;
+import com.company.project.core.exception.BizException;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -87,7 +87,7 @@ public class WebMvcConfigurer extends WebMvcConfigurerAdapter {
                     logger.info(e.getMessage());
                 }
                 //业务失败的异常，如“账号或密码错误”
-                else if (e instanceof ServiceException) {
+                else if (e instanceof BizException) {
                     result.setCode(ResultCode.FAIL).setMessage(e.getMessage());
                     logger.info(e.getMessage());
                 } else if (e instanceof NoHandlerFoundException) {

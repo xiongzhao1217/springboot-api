@@ -1,22 +1,18 @@
 package com.company.project.web.user;
 import com.company.project.core.api.Result;
 import com.company.project.core.api.ResultGenerator;
+import com.company.project.core.exception.BizException;
 import com.company.project.model.user.Member;
 import com.company.project.service.user.MemberService;
 import com.company.project.core.PageBean;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 import javax.validation.Valid;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 /**
  * MemberController created on 2018/03/27.
@@ -42,6 +38,8 @@ public class MemberController {
 
     @PostMapping("/update")
     public Result update(@Valid Member member) {
+        if(true)
+            throw new BizException("你好");
         memberService.updateSelective(member);
         return ResultGenerator.genSuccessResult();
     }
@@ -56,7 +54,7 @@ public class MemberController {
     public Result list(PageBean pageBean, Member query) {
         PageInfo<Member> pageInfo = PageHelper.startPage(pageBean)
         .setOrderBy(pageBean.getOrderBy())
-        .doSelectPageInfo(()->memberService.find(query));
+        .doSelectPageInfo(()-> memberService.find(query));
         return ResultGenerator.genSuccessResult(pageInfo);
     }
 }
