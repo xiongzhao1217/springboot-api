@@ -19,7 +19,8 @@ springboot2基于[作者：lihengming]的[spring-boot-api-project-seed](https://
 - 代码生成工具生成的mapper_xml文件增加Base_Column_List，不用手写表字段名称
 - 可以自定义生成的model类中的属性类型，如数据库字段类型smallint生成model的字段类型为Integer
 - 事物支持声明式与注解式
-- 接口参数自动校验（如非空，长度等）
+- 基于hibernate-validator的参数自动校验，统一异常处理参数校验错误
+- string格式日期参数[格式为：yyyy-MM-dd HH:mm:ss]，自动映射java.util.Date类型
 
 ## 快速开发
 - [开发工具配置](https://github.com/xiongzhao1217/springboot2/blob/master/ide-config.md)
