@@ -1,5 +1,5 @@
 ![Licence](https://img.shields.io/badge/licence-none-green.svg)
-![GitHub Release](https://img.shields.io/github/release/xiongzhao1217/springboot-api.svg)]
+![GitHub Release](https://img.shields.io/github/release/xiongzhao1217/springboot-api.svg)
 ## 简介
 springboot-api基于[作者：lihengming]的[spring-boot-api-project-seed](https://github.com/lihengming/spring-boot-api-project-seed)项目并在其基础上添加新的特新，若您无必要使用新特性，建议去往原作者项目页面，支持原创
 
