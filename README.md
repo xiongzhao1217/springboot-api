@@ -1,7 +1,6 @@
 ![Licence](https://img.shields.io/badge/licence-none-green.svg)
-[![GitHub Release](https://img.shields.io/github/release/lihengming/spring-boot-api-project-seed.svg)](https://github.com/lihengming/spring-boot-api-project-seed/releases)
+[![GitHub Release](https://img.shields.io/github/release/xiongzhao1217/springboot-api.svg)](https://github.com/xiongzhao1217/springboot-api/releases)
 ## 简介
-[spring-boot-api-project-seed](#Mark)
 springboot-api基于[作者：lihengming]的[spring-boot-api-project-seed](https://github.com/lihengming/spring-boot-api-project-seed)项目并在其基础上添加新的特新，若您无必要使用新特性，建议去往原作者项目页面，支持原创
 
 ## 新特性
@@ -26,5 +25,4 @@ springboot-api基于[作者：lihengming]的[spring-boot-api-project-seed](https
 
 ## 快速开发
 - [开发工具配置](https://github.com/xiongzhao1217/springboot2/blob/master/ide-config.md)
-<div id="Mark"></div>
 - [启动项目](https://github.com/lihengming/spring-boot-api-project-seed)
